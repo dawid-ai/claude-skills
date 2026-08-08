@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "claude-skills",
+  "description": "Claude Code skills by Dawid Jozwiak.",
+  "owner": {
+    "name": "Dawid Jozwiak",
+    "url": "https://dawid.ai"
+  },
+  "plugins": [
+    {
+      "name": "forge",
+      "source": "./plugins/forge",
+      "description": "Adversarial execution runner. Turns a task or plan into a FORGE run: measurable Definition of Perfect, isolated builder sub-agents, fresh-eyes critics, git-gated merges, crash-only continuity.",
+      "category": "productivity"
+    }
+  ]
+}

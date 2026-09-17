@@ -1,6 +1,6 @@
 {
   "name": "forge",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Adversarial execution runner. Turns a task or plan into a FORGE run: measurable Definition of Perfect, isolated builder sub-agents, fresh-eyes critics, git-gated merges, crash-only continuity.",
   "author": {
     "name": "Dawid Jozwiak",

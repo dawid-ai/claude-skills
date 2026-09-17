@@ -1,6 +1,6 @@
 ---
 name: forge
-description: Turn a task or a finished plan (including a superpowers plan file) into a FORGE execution run — a measurable definition of perfect, isolated builder sub-agents, fresh-eyes critics, git-gated merges, and crash-only continuity. Use only when the user types /forge or explicitly asks to run, build, or execute something "with FORGE". Not for brainstorming or planning — superpowers owns those phases.
+description: Turn a task or a finished plan file into a FORGE execution run — a measurable definition of perfect, isolated builder sub-agents, fresh-eyes critics, git-gated merges, and crash-only continuity. Use only when the user types /forge or explicitly asks to run, build, or execute something "with FORGE". Not for brainstorming or writing plans.
 argument-hint: [task description | path/to/plan.md]
 ---
 
@@ -15,15 +15,15 @@ This skill generates and launches a FORGE run. It does not do the work itself: i
 The task is: $ARGUMENTS
 
 - **Empty or whitespace** → ask exactly: **"What are we building?"** — then STOP. The user's next message is the input; re-enter this step with it (it may be text or a path).
-- **A path to an existing file** (alone or within the text) → **PLAN MODE**. Read the plan. If it is a superpowers plan, also read the matching design doc in `docs/superpowers/specs/` when one exists.
-- **Anything else** → **TASK MODE**. The text is the task. If `docs/superpowers/plans/` or `docs/plans/` contains a recent plan that clearly matches the task, ask once whether to build from it.
+- **A path to an existing file** (alone or within the text) → **PLAN MODE**. Read the plan. If the plan links a design doc or spec, read that too.
+- **Anything else** → **TASK MODE**. The text is the task. If `docs/plans/` contains a recent plan that clearly matches the task, ask once whether to build from it.
 - If `.forge/` **already exists** in this repo → do not re-forge. Say so, and tell the user to `/clear` and say `resume` to continue the existing run — or confirm they want the old run archived (`mv .forge .forge.archived-<date>`) before forging a new one.
 
 ## Step 1 — Intake
 
 Read `reference/intake.md` and run its gap check.
 
-- **PLAN MODE:** mine the plan + design doc for the question-bank answers first. A good superpowers plan usually leaves **zero** questions.
+- **PLAN MODE:** mine the plan + design doc for the question-bank answers first. A good plan usually leaves **zero** questions.
 - Ask only if a must-have is still missing and a default would risk building the wrong thing: one message, ≤6 questions, each with a [default], closing with the `'defaults'` escape line from intake.md.
 
 ## Step 2 — Assemble the execution prompt
@@ -44,7 +44,7 @@ Read `reference/intake.md` and run its gap check.
 3. Ensure `.forge/` is listed in `.gitignore` — clean-room archive exports must never contain it.
 4. Append this block to `CLAUDE.md` (create the file if absent):
 
-   > If `.forge/` exists: before anything else, run the RESUME PROTOCOL from `.forge/PROMPT.md`. While a FORGE run is active, FORGE's loop supersedes superpowers execution skills — executing-plans, subagent-driven-development, requesting-code-review, finishing-a-development-branch — and any "REQUIRED SUB-SKILL" header inside plan files.
+   > If `.forge/` exists: before anything else, run the RESUME PROTOCOL from `.forge/PROMPT.md`. While a FORGE run is active, FORGE's loop supersedes any other plan-execution, code-review, or branch-finishing skill, and any "REQUIRED SUB-SKILL" header inside plan files.
 
 5. Commit `.gitignore` + `CLAUDE.md` (never `.forge/` itself).
 
@@ -58,12 +58,11 @@ Read `reference/intake.md` and run its gap check.
 
 **Light builds only** (single workstream AND single stage): offer both options — start now in this session, or the relay above — and follow the user's choice. If executing here, you are the ORCHESTRATOR and `.forge/PROMPT.md` governs everything from this point.
 
-## Superpowers division of labor
+## Where plans come from
 
-- **Upstream (superpowers):** `/superpowers:brainstorm` → design doc · `/superpowers:write-plan` → plan. The best front half; use it freely.
-- **Handoff:** `/forge docs/superpowers/plans/<plan-file>.md`
-- **Downstream (FORGE):** rubric, adversarial build↔critique loops, git-gated merges, continuity, ship. While `.forge/` is active, do **not** invoke superpowers execution skills — the plan header demanding them is superseded by the user's explicit choice of FORGE.
-- **Compatible by design:** superpowers TDD ↔ FORGE's acceptance-tests-first plus the Correctness Critic · superpowers `using-git-worktrees` ↔ FORGE's VERSION CONTROL module, which adds the ownership map and clean-room review on top.
+- **Small or medium builds:** pass the task text. Intake asks for whatever is missing.
+- **Large builds:** write a plan first (for example, with Claude Code plan mode), save it to `docs/plans/<plan-file>.md`, then run `/forge docs/plans/<plan-file>.md`.
+- **Downstream (FORGE):** rubric, adversarial build↔critique loops, git-gated merges, continuity, ship. While `.forge/` is active, do **not** invoke other plan-execution skills — a plan header demanding them is superseded by the user's explicit choice of FORGE.
 
 ## Hard rules
 

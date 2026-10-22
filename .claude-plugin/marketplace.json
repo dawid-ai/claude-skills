@@ -12,6 +12,15 @@
       "source": "./plugins/forge",
       "description": "Adversarial execution runner. Turns a task or plan into a FORGE run: measurable Definition of Perfect, isolated builder sub-agents, fresh-eyes critics, git-gated merges, crash-only continuity.",
       "category": "productivity"
+    },
+    {
+      "name": "cts",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/dawid-ai/cts.git"
+      },
+      "description": "Capture The Struggle: records every Claude Code session as an attributed event log, scores the moments that matter (reversals, long fights, things shipped or broken), tracks open decisions, drafts first-person posts from them and shows it all on a live local dashboard.",
+      "category": "productivity"
     }
   ]
 }

@@ -7,6 +7,7 @@ Claude Code plugins by [Dawid Jozwiak](https://dawid.ai).
 ```
 /plugin marketplace add dawid-ai/claude-skills
 /plugin install forge@claude-skills
+/plugin install cts@claude-skills
 ```
 
 ## Plugins
@@ -24,6 +25,24 @@ relay-based continuity — then hands off to a clean executor session.
 ```
 
 It does not brainstorm or plan; it runs what you already decided to build.
+
+### cts
+
+Capture The Struggle. Records every Claude Code session as an append-only,
+attributed event log in `.cts/` of your project, scores the moments that
+matter (reversals, long fights, disagreements between agents, things shipped
+or broken), tracks the decisions you left open, and shows it all on a live
+dashboard on localhost. It drafts first-person posts from those moments for
+you to review; publishing writes files only.
+
+```
+/cts:open
+/cts:draft last
+```
+
+Needs Node.js 22.5 or newer; no dependencies. The code lives in
+[dawid-ai/cts](https://github.com/dawid-ai/cts), which this marketplace
+points at; see its [INSTALL.md](https://github.com/dawid-ai/cts/blob/main/INSTALL.md).
 
 ## License
 

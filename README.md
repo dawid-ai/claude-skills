@@ -40,8 +40,9 @@ you to review; publishing writes files only.
 /cts:draft last
 ```
 
-Needs Node.js 22.5 or newer; no dependencies. See
-[plugins/cts/INSTALL.md](plugins/cts/INSTALL.md).
+Needs Node.js 22.5 or newer; no dependencies. The code lives in
+[dawid-ai/cts](https://github.com/dawid-ai/cts), which this marketplace
+points at; see its [INSTALL.md](https://github.com/dawid-ai/cts/blob/main/INSTALL.md).
 
 ## License
 

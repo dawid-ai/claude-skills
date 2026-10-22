@@ -2,6 +2,7 @@ name: cts
 
 on:
   push:
+    branches: [main]
     paths: ['plugins/cts/**', '.github/workflows/cts.yml']
   pull_request:
     paths: ['plugins/cts/**', '.github/workflows/cts.yml']

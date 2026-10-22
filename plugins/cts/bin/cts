@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+// Fast path for the two commands that must return instantly (no sqlite, no server): mark and dismiss.
+const [cmd, ...rest] = process.argv.slice(2);
+if ((cmd === 'mark' || cmd === 'dismiss') && !rest.includes('--help') && !rest.includes('-h')) {
+  const { findRoot } = await import('../src/lib/util.mjs');
+  const { writeHumanEvent } = await import('../src/lib/log.mjs');
+  const root = findRoot(process.env.CLAUDE_PROJECT_DIR || process.cwd());
+  if (cmd === 'dismiss') { writeHumanEvent(root, 'dismiss', {}); console.log('dismissed the latest auto-detected moment'); }
+  else {
+    let flag = null;
+    if (rest[0] === '?') { flag = '?'; rest.shift(); }
+    const note = rest.join(' ').trim();
+    const ev = writeHumanEvent(root, 'mark', { note, flag });
+    console.log(flag ? `opened a thread${note ? ': ' + note : ''}` : `marked${note ? ': ' + note : ''} (${ev.id.slice(-6)})`);
+  }
+} else if (cmd === 'subagent-statusline' && !rest.includes('--help') && !rest.includes('-h')) {
+  // Same fast path: Claude Code runs this on every agent-panel refresh.
+  const fs = await import('node:fs');
+  const { agentLines } = await import('../src/lib/agentline.mjs');
+  let input = {};
+  try { input = JSON.parse(fs.readFileSync(0, 'utf8') || '{}'); } catch { /* no or bad input: print nothing */ }
+  try { const lines = agentLines(input); if (lines.length) process.stdout.write(lines.join('\n') + '\n'); } catch { /* never break the panel */ }
+} else {
+  const m = await import('../src/cli.mjs');
+  await m.main(process.argv.slice(2));
+}

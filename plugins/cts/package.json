@@ -1,0 +1,13 @@
+{
+  "name": "cts",
+  "version": "0.2.0",
+  "description": "Capture The Struggle - truthful, attributed, visual record of Claude Code sessions",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=22.5" },
+  "bin": { "cts": "bin/cts" },
+  "scripts": {
+    "test": "node --test --test-concurrency=1 test/*.test.mjs",
+    "bench": "node scripts/bench.mjs"
+  }
+}

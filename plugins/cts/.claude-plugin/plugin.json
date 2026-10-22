@@ -1,0 +1,19 @@
+{
+  "name": "cts",
+  "displayName": "Capture The Struggle",
+  "version": "0.2.0",
+  "description": "Records every Claude Code session as a truthful, attributed event log, scores the moments that matter, and shows them on a live local dashboard.",
+  "author": {
+    "name": "Dawid Jozwiak",
+    "url": "https://dawid.ai"
+  },
+  "homepage": "https://dawid.ai",
+  "repository": "https://github.com/dawid-ai/claude-skills",
+  "license": "MIT",
+  "keywords": [
+    "build-in-public",
+    "timeline",
+    "observability",
+    "hooks"
+  ]
+}

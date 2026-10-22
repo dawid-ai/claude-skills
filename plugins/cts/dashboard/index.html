@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>CTS — Capture The Struggle</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141413'/%3E%3Cpath d='M8 9v14M16 9v14M24 9v14' stroke='%236b8e9e' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='13' r='3' fill='%23f08a56'/%3E%3Ccircle cx='16' cy='20' r='3' fill='%23f08a56'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header id="top">
+  <div class="brand"><svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true"><path d="M8 5v22M16 5v22M24 5v22" stroke="currentColor" stroke-opacity=".35" stroke-width="2.5" stroke-linecap="round"/><circle cx="8" cy="11" r="3.2" class="dot-h"/><circle cx="16" cy="21" r="3.2" fill="currentColor"/></svg><b>CTS</b><span id="proj" class="mut"></span></div>
+  <nav id="tabs" aria-label="Views"></nav>
+  <div id="conn" class="conn" title="Live connection"><i></i><span>connecting</span></div>
+  <button id="ftoggle" class="ghost" aria-label="Filters" aria-controls="filters" aria-expanded="true" title="Filters">⚲</button>
+  <button id="helpbtn" class="ghost" aria-label="Keyboard map" title="Keyboard map (?)">?</button>
+</header>
+<section id="strip" aria-live="polite"></section>
+<section id="filters" aria-label="Filters"></section>
+<main id="main" tabindex="-1"></main>
+<aside id="drawer" hidden aria-label="Transcript"></aside>
+<dialog id="help"></dialog>
+<div id="toast" role="status"></div>
+<script src="app.js" type="module"></script>
+</body>
+</html>

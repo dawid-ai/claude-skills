@@ -44,7 +44,7 @@ test('zip: deflate and stored entries round trip, checksum failures and non-zips
   assert.ok(r[0].data.equals(big) && r[1].data.equals(rnd) && r[2].data.toString() === 'héllo');
   const bad = Buffer.from(z); bad[40] ^= 0xff;
   assert.throws(() => readZip(bad)); assert.throws(() => readZip(Buffer.from('nope')));
-  const unzip = spawnSync('python3', ['-c', 'import zipfile,sys;z=zipfile.ZipFile(sys.argv[1]);print(z.testzip(), len(z.namelist()))', (fs.writeFileSync('/tmp/cts-zt.zip', z), '/tmp/cts-zt.zip')], { encoding: 'utf8' });
+  const unzip = spawnSync('python3', ['-c', 'import zipfile,sys;z=zipfile.ZipFile(sys.argv[1]);print(z.testzip(), len(z.namelist()))', (fs.writeFileSync(path.join(os.tmpdir(), 'cts-zt.zip'), z), path.join(os.tmpdir(), 'cts-zt.zip'))], { encoding: 'utf8' });
   if (unzip.status === 0) assert.equal(unzip.stdout.trim(), 'None 3', 'a standard zip reader accepts it');
 });
 

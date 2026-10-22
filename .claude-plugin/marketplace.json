@@ -16,8 +16,8 @@
     {
       "name": "cts",
       "source": {
-        "source": "github",
-        "repo": "dawid-ai/cts"
+        "source": "url",
+        "url": "https://github.com/dawid-ai/cts.git"
       },
       "description": "Capture The Struggle: records every Claude Code session as an attributed event log, scores the moments that matter (reversals, long fights, things shipped or broken), tracks open decisions, drafts first-person posts from them and shows it all on a live local dashboard.",
       "category": "productivity"
